@@ -355,6 +355,32 @@ function setupReveal() {
   nodes.forEach((el) => observer.observe(el));
 }
 
+function setupParallax() {
+  const nodes = document.querySelectorAll("[data-parallax]");
+  if (prefersReduced || !nodes.length) return;
+  let ticking = false;
+
+  const update = () => {
+    const viewportCenter = window.innerHeight / 2;
+    nodes.forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      const offset = Math.max(-22, Math.min(22, (viewportCenter - (rect.top + rect.height / 2)) * 0.045));
+      node.style.setProperty("--parallax-y", `${offset}px`);
+    });
+    ticking = false;
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate, { passive: true });
+  update();
+}
+
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -491,4 +517,5 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 renderMenu();
 renderCart();
 setupReveal();
+setupParallax();
 header.classList.toggle("is-scrolled", window.scrollY > 12);
