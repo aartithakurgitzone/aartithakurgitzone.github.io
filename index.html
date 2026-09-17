@@ -70,17 +70,18 @@
   <main id="main">
     <section class="hero" id="home">
       <div class="hero__copy">
-        <p class="eyebrow">Seasonal kitchen · Est. 2024</p>
-        <h1>From garden to plate, in bloom.</h1>
+        <p class="eyebrow hero__eyebrow"><span aria-hidden="true"></span> Open today · Seasonal kitchen · Est. 2024</p>
+        <h1>From garden to plate, <em>in bloom.</em></h1>
         <p>Bright produce, quiet technique, and food that tastes like it was picked this morning. Daisybloom is a modern table for everyday meals that still feel considered.</p>
         <div class="hero__actions">
           <a class="db-btn" href="#menu">Explore Menu</a>
-          <button class="db-btn db-btn--ghost" type="button" data-open-cart>Order Now</button>
+          <a class="db-btn db-btn--ghost" href="#contact">Reserve a Table</a>
         </div>
         <div class="hero__meta">
           <p><span>Kitchen hours</span><strong>7:30am – 9:00pm</strong></p>
           <p><span>Today’s note</span><strong>Citrus, herbs, honey</strong></p>
         </div>
+        <a class="hero__scroll" href="#ingredient-heading"><span>Discover the day</span><i aria-hidden="true">↓</i></a>
       </div>
       <div class="hero__media">
         <img
@@ -88,6 +89,7 @@
           width="1400"
           height="1600"
           alt="A composed restaurant plate of seasonal vegetables and herbs on linen"
+          fetchpriority="high"
         >
         <div class="hero__caption">
           <small>House plate</small>
